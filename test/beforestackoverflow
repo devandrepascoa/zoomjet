@@ -1,0 +1,29 @@
+
+let calls = []
+
+function Room(props) {
+    ...
+    peer.on('call', (call) => {
+      ...
+      calls.push(call)
+    })
+
+    socket.on('user-disconnected', id => {
+      calls = calls.filter((call) => {
+        if (call.peer == id) {
+          call.close()
+          console.log('Closed')
+          return false
+        } else {
+          return true
+        }
+      })
+    })
+
+    socket.on('user-connected', (id) => {
+        ...
+        calls.push(call)
+    })
+
+    ...
+  }

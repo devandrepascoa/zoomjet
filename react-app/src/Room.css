@@ -1,0 +1,171 @@
+.room {
+  display: flex;
+  height: 100%;
+}
+
+.room__conference {
+  display: flex;
+  flex-direction: column;
+  background-color: #212529;
+  box-shadow: 10px 0 5px -2px #888;
+  flex: 0.8;
+}
+
+.room__videoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  flex: 0.95;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.room__options {
+  display: flex;
+  flex: 0.05;
+  align-self: stretch;
+  justify-content: center;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.room__options > button {
+  min-width: 60px;
+  min-height: 50px;
+  max-width: 100px;
+  outline: none;
+  flex: 1;
+  border-radius: 12px;
+  margin: 5px;
+  background-color: #242324;
+  border: 2px solid #242324;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition-duration: 0.4s;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+}
+
+.room__options > button:hover {
+  background-color: #4a4e69;
+  border-color: #4a4e69;
+}
+
+.room__videoGrid::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.room__header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  color: #f5f5f5;
+  justify-content: center;
+}
+
+.room__header > div {
+  width: 30.743px;
+}
+
+.room__header > button {
+  display: flex;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 10px;
+}
+
+.room__chat {
+  display: flex;
+  flex-direction: column;
+  background-color: #242324;
+  border-left: 1px solid #3d3d42;
+  flex: 0.2;
+}
+
+.room__chatWindow {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-top: 5px;
+}
+
+.room__messages {
+  color: white;
+  list-style: none;
+}
+
+.room__messageContainer {
+  padding: 22px 12px;
+  display: flex;
+}
+
+.room__messageContainer input {
+  flex-grow: 1;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #f5f5f5;
+}
+
+.room__messagePopupButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.room__messagePopupButton > div {
+  display: flex;
+  flex-direction: row;
+  border-radius: 100%;
+
+}
+
+@media (max-width: 1200px) {
+  .room__conference {
+    flex: 0.7;
+  }
+  .room__chat {
+    flex: 0.3;
+  }
+}
+
+@media (max-width: 900px) {
+  .room__conference {
+    flex: 1;
+  }
+
+  .room__chat {
+    display: none;
+  }
+
+  .room__conference.popup {
+    display: none;
+  }
+
+  .room__chat.popup {
+    display: flex;
+    border-left: none;
+    flex: 1;
+  }
+  .room__header {
+    background-color: #212529;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+}
+@media (min-width: 900px) {
+  .room__messagePopupButton {
+    display: none;
+  }
+  .room__header > button {
+    display: none;
+  }
+  .room__header > div {
+    display: none;
+  }
+}

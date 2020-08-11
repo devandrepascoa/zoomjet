@@ -1,0 +1,40 @@
+
+...
+let [calls, setCalls] = useState({ calls: [], toClose: [] })
+
+useEffect(() => {
+console.log(calls)
+if (calls.toClose.length != 0) {
+    setCalls((calls) => {
+    return {
+        calls: calls.calls.filter((call) => {
+        if (calls.toClose.includes(call.peer)) {
+            call.close()
+            return false
+        } else {
+            return true
+        }
+        }),
+        toClose: []
+    }
+    })
+
+}
+}, [calls])
+
+
+peer.on('call', (call) => {
+    ...
+    setCalls((calls) => { return { calls: [...calls.calls, call], toClose: calls.toClose } })
+})
+
+
+socket.on('user-disconnected', id => {
+    setCalls((calls) => { return { calls: calls.calls, toClose: [...calls.toClose, id] } })
+    ...
+})
+
+socket.on('user-connected', (id) => {
+    setCalls((calls) => { return { calls: [...calls.calls, call], toClose: calls.toClose } })
+})
+...
