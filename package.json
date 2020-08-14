@@ -16,7 +16,7 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "peer": "^0.5.3",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.3.0"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.1",

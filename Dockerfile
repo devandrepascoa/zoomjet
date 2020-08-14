@@ -1,4 +1,4 @@
-FROM node:9-slim
+FROM node:12.18.3-slim
 WORKDIR /zoomjet
 COPY package.json /zoomjet
 RUN npm install
