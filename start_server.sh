@@ -1,1 +1,1 @@
-docker run -d --restart=always -p 80:80 zoomjet
+docker run -d --name=zoomjet_node --restart=always -p 80:80 -p 8443:8443 zoomjet
