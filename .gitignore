@@ -1,3 +1,4 @@
 .env
-/sslcert
 /node_modules
+/test
+
