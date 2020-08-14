@@ -23,9 +23,11 @@ function Room({ room_id, name, password }) {
   }, [chatPopUp]);
 
   const joinRoom = (localStream) => {
-    const socket = io("casa.pascoa.org", { secure: true });
+    const socket = io("https://casa.pascoa.org", { secure: true });
     setSocket(socket);
     const peer = new Peer(undefined, {
+      secure:true,
+      proxied:true,
       path: "/peerjs",
       host: "casa.pascoa.org",
       port: "8443",
@@ -53,8 +55,6 @@ function Room({ room_id, name, password }) {
       let name = user.name;
       setMessages((messages) => [...messages, { name, message }]);
       if (!chatPopUp && window.matchMedia("(max-width: 900px)").matches) {
-        console.log("Happened");
-        
         setNumUncheckedMessages((num) => num + 1);
       }
     });

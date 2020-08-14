@@ -17,7 +17,7 @@
     "use-interval": "^1.2.1"
   },
   "scripts": {
-    "start": "HTTPS=true SSL_CRT_FILE=../sslcert/selfsigned.crt SSL_KEY_FILE=../sslcert/selfsigned.key react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build && rm -r ../public && mv build ../public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

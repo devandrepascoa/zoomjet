@@ -32,15 +32,8 @@ function ModifiedVideoStream({
   const [stream, setStream] = useState(null);
 
   useEffect(() => {
-    // navigator.mediaDevices.getDisplayMedia().then(localStream => {
-    //     let videoSender = call.peerConnection.getSenders().find((sender) => sender.track.kind == 'video')
-    //     let videoTrack = localStream.getVideoTracks()[0]
-    //     videoSender.replaceTrack(videoTrack)
-    // }).catch((error) => {
-    //     console.log(error)
-    // });
-
     navigator.mediaDevices
+      // .getDisplayMedia()
       .getUserMedia({ video: true, audio: true })
       .then((localStream) => {
         localStream.getVideoTracks()[0].enabled = cameraOn;
@@ -75,8 +68,9 @@ function ModifiedVideoStream({
 
   useEffect(() => {
     if (stream) {
-      let videoTrack = stream.getVideoTracks()[0];
-
+      let videoTrack =
+        stream.getVideoTracks().length > 0 ? stream.getVideoTracks()[0] : null;
+      if (!videoTrack) return;
       if (cameraOn) videoTrack.enabled = true;
       else videoTrack.enabled = false;
     }
@@ -84,8 +78,9 @@ function ModifiedVideoStream({
 
   useEffect(() => {
     if (stream) {
-      let audioTrack = stream.getAudioTracks()[0];
-
+      let audioTrack =
+        stream.getAudioTracks().length > 0 ? stream.getAudioTracks()[0] : null;
+      if (!audioTrack) return;
       if (micOn) audioTrack.enabled = true;
       else audioTrack.enabled = false;
     }
