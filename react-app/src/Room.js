@@ -5,6 +5,14 @@ import io from "socket.io-client";
 import Peer from "peerjs";
 import CallStream from "./CallStream";
 let calls = [];
+let socketio_port =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "3000"
+    : "443";
+let peerjs_port =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "3443"
+    : "8443";
 
 function Room({ room_id, name, password }) {
   const [socket, setSocket] = useState(null);
@@ -23,14 +31,20 @@ function Room({ room_id, name, password }) {
   }, [chatPopUp]);
 
   const joinRoom = (localStream) => {
-    const socket = io("https://casa.pascoa.org", { secure: true });
+    const socket = io("https://casa.pascoa.org:" + socketio_port, {
+      secure: true,
+    });
+    window.addEventListener("beforeunload", () => {
+      socket.emit("disconnect");
+    });
+
     setSocket(socket);
     const peer = new Peer(undefined, {
-      secure:true,
-      proxied:true,
+      secure: true,
+      proxied: true,
       path: "/peerjs",
-      host: "casa.pascoa.org",
-      port: "8443",
+      host: "/",
+      port: peerjs_port,
     });
 
     peer.on("open", (id) => {

@@ -20,29 +20,40 @@ function RoomAuthentication({ history, location }) {
   return !formValidated ? (
     <div className="roomAuthentication">
       <form onSubmit={onFormSubmit} className="roomAuthentication__form">
-        <h1>Authentication for room: {room_id}</h1>
-        <label className="roomAuthentication__nameLabel">Name</label>
+        <h1>Authentication For Room: {room_id}</h1>
         <input
           onChange={(e) => {
             setName(e.target.value);
           }}
+          placeholder="Name"
           autoFocus={true}
           className="roomAuthentication__name"
         ></input>
+
         {hasPassword ? (
           <>
-            <label className="roomAuthentication__passwordLabel">
-              Room Password
-            </label>
             <input
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              placeholder="Password"
               className="roomAuthentication__password"
             ></input>
           </>
         ) : null}
-        <button className="roomAuthentication__submit"></button>
+        <button className="roomAuthentication__submit">
+          <svg
+            width="451.846px"
+            height="451.847px"
+            viewBox="0 0 451.846 451.847"
+          >
+            <path
+              d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+		L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+		c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"
+            />
+          </svg>
+        </button>
       </form>
     </div>
   ) : (

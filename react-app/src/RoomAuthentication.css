@@ -23,12 +23,17 @@
   display: flex;
   flex: 1;
   background-color: transparent;
-
+  border: none;
   outline: none;
   margin-bottom: 40px;
-  color: white;
   font-size: 16px;
   line-height: 40px;
+  color: white;
+  border-bottom: 2px solid #434a52;
+}
+.roomAuthentication__name::placeholder,
+.roomAuthentication__password::placeholder {
+  color: #434a52;
 }
 
 .roomAuthentication__submit {
@@ -43,17 +48,24 @@
   border: 2px solid #242324;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition-duration: 0.4s;
-  font-size: large;
-  color: white;
+  font-size: 13px;
   cursor: pointer;
+  padding: 10px;
 }
-
-
+.roomAuthentication__submit svg{
+width: 20px;
+height: auto;
+fill: rgb(199, 192, 192);
+}
 .roomAuthentication__submit:hover {
   background-color: #4a4e69;
   border-color: #4a4e69;
 }
 
-.roomAuthentication h1{
-  color:white;
+.roomAuthentication__form h1 {
+  font-size: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: 1px 1px 4px black;
+  color: rgb(196, 185, 185);
 }
